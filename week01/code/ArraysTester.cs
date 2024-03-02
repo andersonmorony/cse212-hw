@@ -39,7 +39,19 @@ public static class ArraysTester {
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return new double[0]; // replace this return statement with your own
+        // Will be need declare a double array to store the number result
+        // Than before the loop I declare in index 0 the number value for not create a if inside the loop to the first line of my array
+        // I created a loop for to process the math calc and store the result inside the array result;
+        // the end is return this array
+
+        double[] results = new double[length];
+        results[0] = number;
+        for (int i = 1; i < length; i++)
+        {
+            results[i] = number * (1 + i);
+        }
+
+        return results; // replace this return statement with your own
     }
     
     /// <summary>
@@ -57,5 +69,22 @@ public static class ArraysTester {
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
+        // get the lenght of quantity  using the count less amount
+        int choosedNumber = data.Count() - amount;
+
+        // get the index 0 into choose number(result the previuos variable
+        List<int> numbers = data.GetRange(0, choosedNumber);
+
+        // get the range and create a temp list
+        List<int> temp = data.GetRange(choosedNumber, amount);
+
+        // add the rest of numbers to temp list
+        temp.AddRange(numbers);
+
+        // update the data dymanic insert the temp
+        for (int i = 0; i < data.Count(); i++)
+        {
+            data[i] = numbers2[i];
+        }
     }
 }

@@ -84,7 +84,7 @@ public static class ArraysTester {
         // update the data dymanic insert the temp
         for (int i = 0; i < data.Count(); i++)
         {
-            data[i] = numbers2[i];
+            data[i] = temp[i];
         }
     }
 }

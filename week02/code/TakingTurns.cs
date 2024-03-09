@@ -12,10 +12,12 @@
         players.AddPerson("Bob", 2);
         players.AddPerson("Tim", 5);
         players.AddPerson("Sue", 3);
-        // Console.WriteLine(players);    // This can be un-commented out for debug help
+        //Console.WriteLine(players);    // This can be un-commented out for debug help
         while (players.Length > 0)
             players.GetNextPerson();
         // Defect(s) Found: 
+        // The method inside the class PersonQueue was always insert the person at index 0
+        // Was need change it to insert in end of list
 
         Console.WriteLine("---------");
 
@@ -39,6 +41,7 @@
             players.GetNextPerson();
 
         // Defect(s) Found: 
+        // Solved the test one this was fixed together
 
         Console.WriteLine("---------");
 
@@ -57,6 +60,7 @@
             // Console.WriteLine(players);
         }
         // Defect(s) Found: 
+        // Was need add an second condition or an else to add the person on queue when the property Turns is 0 (zero)
 
         Console.WriteLine("---------");
 
@@ -74,6 +78,7 @@
             // Console.WriteLine(players);
         }
         // Defect(s) Found: 
+        // Was need change the condition and add a validation when the Turns is equal or less than zero
 
         Console.WriteLine("---------");
 
@@ -84,5 +89,6 @@
         players = new TakingTurnsQueue();
         players.GetNextPerson();
         // Defect(s) Found:
+        // without changes by me to show message "No one in the queue."
     }
 }

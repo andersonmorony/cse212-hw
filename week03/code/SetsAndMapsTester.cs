@@ -111,6 +111,15 @@ public static class SetsAndMapsTester {
         // To display the pair correctly use something like:
         // Console.WriteLine($"{word} & {pair}");
         // Each pair of words should displayed on its own line.
+        var chars = new HashSet<string>();
+        foreach (var word in words)
+        {
+            var inverseWord = $"{word.ToLower()[1]}{word.ToLower()[0]}";
+            if(chars.Contains(inverseWord))
+                Console.WriteLine($"{word} & {inverseWord}");
+
+            chars.Add(word);
+        }
     }
 
     /// <summary>
@@ -131,7 +140,13 @@ public static class SetsAndMapsTester {
         var degrees = new Dictionary<string, int>();
         foreach (var line in File.ReadLines(filename)) {
             var fields = line.Split(",");
+            var key = fields[3];
+            var value = 1;
             // Todo Problem 2 - ADD YOUR CODE HERE
+            if (degrees.ContainsKey(key))
+                value += degrees[key];
+            
+            degrees[key] = value;
         }
 
         return degrees;
@@ -158,7 +173,39 @@ public static class SetsAndMapsTester {
     /// #############
     private static bool IsAnagram(string word1, string word2) {
         // Todo Problem 3 - ADD YOUR CODE HERE
-        return false;
+        var firstWord = new HashSet<char>();
+        foreach (var word in word1.ToLower())
+        {
+            if (firstWord.Contains(word) && !word1.Contains(' '))
+                return false;
+
+            firstWord.Add(word);
+        }
+
+        var secondWord = new HashSet<char>();
+        foreach (var word in word2.ToLower())
+        {
+            if (secondWord.Contains(word) && !word1.Contains(' '))
+                return false;
+
+            secondWord.Add(word);
+        }
+
+        bool isAnagram;
+        foreach (var item in firstWord)
+        {
+            isAnagram = secondWord.Contains(item);
+            if(!isAnagram)
+                return false;
+        }
+
+        var wordWithoutSpace = word1.Replace(" ", "").Length;
+        var word2WithoutSpace = word2.Replace(" ", "").Length;
+
+        if (wordWithoutSpace != word2WithoutSpace || firstWord.Count() != secondWord.Count())
+            return false;
+
+        return true;
     }
 
     /// <summary>
